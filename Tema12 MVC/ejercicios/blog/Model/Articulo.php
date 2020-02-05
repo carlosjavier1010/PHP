@@ -1,11 +1,19 @@
 <?php
+    require_once 'BlogDB.php';
+
     class Articulo{
         private $id;
         private $titulo;
         private $fecha;
         private $contenido;
 
-        
+        public function __construct($id,$titulo,$fecha,$contenido)
+        {
+            $this->id = $id;
+            $this->titulo = $titulo;
+            $this->fecha = $fecha;
+            $this->contenido = $contenido;
+        }
 
         /**
          * Get the value of id
@@ -86,6 +94,30 @@
 
                 return $this;
         }
+
+        public function insert() {
+            $conexion = BlogDB::connectDB();
+            $insercion = "INSERT INTO articulos (titulo, fecha, contenido) VALUES (\"".$this->titulo."\", \"".$this->fecha."\", \"".$this->contenido."\")";
+            $conexion->exec($insercion);
+          }
         
+        public function delete() {
+            $conexion = BlogDB::connectDB();
+            $borrado = "DELETE FROM articulos WHERE id=\"".$this->id."\"";
+            $conexion->exec($borrado);
+        }
+        public static function getArticulos(){
+            $conexion = BlogDB::connectDB();
+            $seleccion = "SELECT id, titulo, fecha, contenido FROM articulos ORDER BY fecha desc";
+            $consulta = $conexion->query($seleccion);
+            
+            $articulos = [];
+            
+            while ($registro = $consulta->fetchObject()) {
+              $articulos[] = new Articulo($registro->id, $registro->titulo, $registro->fecha, $registro->contenido);
+            }
+            
+            return $articulos;      
+        }
     }
 ?>
