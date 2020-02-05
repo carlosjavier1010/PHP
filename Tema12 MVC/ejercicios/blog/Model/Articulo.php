@@ -119,5 +119,21 @@
             
             return $articulos;      
         }
+        public static function getArticulosById($id){
+                $conexion = BlogDB::connectDB();
+                $seleccion = 'SELECT id, titulo, fecha, contenido FROM articulos WHERE id="'.$id.'"';
+                $consulta = $conexion->query($seleccion);
+                
+                $articulos = $consulta->fetchObject();
+                $articulos = new Articulo($articulos->id, $articulos->titulo, $articulos->fecha, $articulos->contenido);
+                return $articulos;  
+                }
+                
+        public static function setArticulosById($id,$titulo,$fecha,$contenido){
+                $conexion = BlogDB::connectDB();
+                $seleccion = "UPDATE articulos SET titulo=\"$titulo\", fecha=\"$fecha\", contenido=\"$contenido\" WHERE id=\"$id\"";
+                $conexion->exec($seleccion);
+                }            
+            
     }
 ?>

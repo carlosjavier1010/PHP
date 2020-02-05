@@ -26,6 +26,7 @@
       <p style="border: 1px solid black">Contenido:<?=$articulos->getContenido()?></p>
       
       <a href="../Controller/borraArticulo.php?id=<?=$articulos->getId()?>">Borrar</a>
+      <a href="../Controller/nuevoArticulo.php?id=<?=$articulos->getId()?>">Modificar</a>
       </div>
     <?php
     }
