@@ -1,0 +1,7 @@
+4
+hola soy carlos
+9
+esta es segunda linea
+12
+esta es tercera linea
+esta es cuarta linea
