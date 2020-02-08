@@ -25,7 +25,7 @@
     $productos = Producto::getProductos();
     $inicio = 0;
     //Mostrar listado de productos con su información y su boton de comprar
-    ?>
+    ?>  
     <div class="container-fluid">
     <h1>TIENDA</h1>
     <table class="table table-dark">
