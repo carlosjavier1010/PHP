@@ -1,5 +1,6 @@
 <?php
 require_once '../Model/Producto.php';
+$time = time() + (60 * 60);
 $carrito = unserialize($_COOKIE['carrito']); 
  //Cargar al carro nuevo producto añadido al carrito.
  if (isset($_REQUEST['accion']) && $_REQUEST['accion'] == "adcarro") {
