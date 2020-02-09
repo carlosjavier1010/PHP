@@ -19,9 +19,9 @@
 
     if (isset($_REQUEST['maximo'])) {
         echo '<script>alert("No puedes añadir mas unidades de este producto porque se ha alcando su maximo en stock");</script>';
-        
     }
-
+        
+        
     $productos = Producto::getProductos();
     $inicio = 0;
     //Mostrar listado de productos con su información y su boton de comprar

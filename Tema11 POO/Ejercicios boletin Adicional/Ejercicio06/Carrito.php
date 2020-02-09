@@ -3,16 +3,16 @@ session_start();
 require_once 'Producto.php';
 // Obtiene todos los articulos
 try {
-    $conexion = new PDO("mysql:host=localhost;dbname=tienda;charset=utf8", "root", "");
+    $conexion = new PDO("mysql:host=localhost;dbname=tiendapoo;charset=utf8", "root", "");
 } catch (Exception $e) {
     echo ("Imposible acceder a la base de datos");
     die("Error: " . $e->getMessage());
 }
-$seleccion = "SELECT codigo, nombre, precio, imagen, stock FROM productos ORDER BY nombre";
+$seleccion = "SELECT id, nombre, precio, stock FROM productos ORDER BY nombre";
 $consulta = $conexion->query($seleccion);
 $_SESSION['catalogo'] = [];
 while ($registro = $consulta->fetchObject()) {
-    $_SESSION['catalogo'][$registro->codigo] = serialize(new Producto($registro->codigo, $registro->nombre, $registro->precio, $registro->imagen, $registro->stock));
+    $_SESSION['catalogo'][$registro->codigo] = serialize(new Producto($registro->id, $registro->nombre, $registro->precio, $registro->stock));
 }
 //comprueba si hay productos en la cesta almacenados en cookies
 if (!isset($_SESSION['productos'])) {
