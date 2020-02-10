@@ -4,5 +4,6 @@ require_once '../Model/Producto.php';
 if (isset($_REQUEST['formmod'])) {
     Producto::modProducto($_REQUEST['codigo'],$_REQUEST['nombre'],$_REQUEST['precio'],$_REQUEST['stock']);
     header('Location:index.php');
+    echo 'sdfdsfdsf';
 }
 ?>
