@@ -106,12 +106,12 @@ class Producto
         return self::$productos;
     }
 
-    //Le pasamos un objeto en la llamada static y la metemos en la BBDD
-    public static function setProductos($producto)
-    {
-        $nombread = $producto->getNombre();
-        $precioad = $producto->getPrecio();
-        $stockad = $producto->getStock();
+    
+    public function insert()
+    {   
+        $nombread = $this->nombre;
+        $precioad = $this->precio;
+        $stockad = $this->stock;
 
         $conexion = TiendaDB::connectDB();
         // Comprueba si ya existe un cliente con el DNI introducido
@@ -130,11 +130,11 @@ class Producto
             $conexion->exec($insercion);
         }
     }
-    public static function modProducto($codigo, $nombre, $precio, $stock)
+    public function update()
     {
         $conexion = TiendaDB::connectDB();
 
-        $insercion = "UPDATE productos SET nombre=\"$nombre\", precio=\"$precio\", stock=\"$stock\" WHERE id=\"$codigo\"";
+        $insercion = "UPDATE productos SET nombre=\"$this->nombre\", precio=\"$this->precio\", stock=\"$this->stock\" WHERE id=\"$this->codigo\"";
         //echo $insercion;
         $conexion->exec($insercion);
     }
@@ -183,12 +183,12 @@ class Producto
         //echo $insercion;
         $conexion->exec($insercion);
     }
-    public static function delete($codigo)
+    public function delete()
     {
 
         $conexion = TiendaDB::connectDB();
 
-        $insercion = "DELETE FROM productos WHERE id=\"$codigo\"";
+        $insercion = "DELETE FROM productos WHERE id=\"$this->codigo\"";
         //echo $insercion;
         $conexion->exec($insercion);
     }

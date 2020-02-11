@@ -88,7 +88,7 @@ $inicio++;
             
     <?php
     $inicio = 0;
-    var_dump($carrito);
+    //var_dump($carrito);
     foreach ($carrito as $key => $value) {
         
     
