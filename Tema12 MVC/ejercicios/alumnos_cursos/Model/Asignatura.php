@@ -52,6 +52,11 @@ class Asignatura{
 
                 return $this;
         }
+        public function insert() {
+            $conexion = AlumnoDB::connectDB();
+            $insercion = "INSERT INTO asignatura (codigo,nombre) VALUES (0,\"".$this->nombre."\")";
+            $conexion->exec($insercion);
+        }
         public function delete(){
             $conexion = AlumnoDB::connectDB();
 

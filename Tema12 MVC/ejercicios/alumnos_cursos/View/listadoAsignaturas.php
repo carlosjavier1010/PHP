@@ -66,7 +66,7 @@ $inicio++;
     
     </div>
 
-    
+    <a href="../Controller/nuevaAsignatura.php" style="margin: 0 auto;"><input type="button" value="Nueva Asignatura" class="btn btn-success"></a>
     <a href="../Controller/index.php" style="margin: 0 auto;"><input type="button" value="Volver" class="btn btn-info"></a>
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
