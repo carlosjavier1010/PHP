@@ -138,7 +138,15 @@ class Producto
         //echo $insercion;
         $conexion->exec($insercion);
     }
+    public function delete()
+    {
 
+        $conexion = TiendaDB::connectDB();
+
+        $insercion = "DELETE FROM productos WHERE id=\"$this->codigo\"";
+        //echo $insercion;
+        $conexion->exec($insercion);
+    }
     public static function getProducto($id)
     {
         $encontrado = false;
@@ -183,14 +191,6 @@ class Producto
         //echo $insercion;
         $conexion->exec($insercion);
     }
-    public function delete()
-    {
-
-        $conexion = TiendaDB::connectDB();
-
-        $insercion = "DELETE FROM productos WHERE id=\"$this->codigo\"";
-        //echo $insercion;
-        $conexion->exec($insercion);
-    }
+    
 }
 ?>
